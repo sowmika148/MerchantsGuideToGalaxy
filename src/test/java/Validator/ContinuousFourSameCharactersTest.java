@@ -14,7 +14,7 @@ public class ContinuousFourSameCharactersTest {
 
     @Test
     public void shouldReturnFalseWhenThereIsCharacterRepeatingContinuouslyMoreThan3Times() {
-        assertFalse(new ContinuousFourSameCharacters().isValid("DDDD"));
+        assertFalse(new ContinuousFourSameCharacters().isValid("IAXXXXAI"));
     }
 
 }

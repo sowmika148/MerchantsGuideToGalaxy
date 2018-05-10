@@ -14,7 +14,7 @@ public abstract class RomanNumberValidator {
                 new ContinuousFourSameCharacters());
     }
 
-    static boolean isValidRomanNumber(String romanNumber) {
+    public static boolean isValidRomanNumber(String romanNumber) {
         for (RomanNumberValidator romanNumberValidator : RomanNumberValidator.getRules()) {
             if (!romanNumberValidator.isValid(romanNumber))
                 return false;
