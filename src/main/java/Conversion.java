@@ -1,14 +1,16 @@
-public class Conversion {
+import Inputs.IntergalacticQuestions;
+
+class Conversion {
 
     String[] input;
 
-    public Conversion(String[] input) {
+    Conversion(String[] input) {
         this.input = input;
     }
 
-    public String[] convert(){
+    String[] convert(){
         InputProcessor inputProcessor = new InputProcessor(input);
-        inputProcessor.processInput();
+        IntergalacticQuestions intergalacticQuestions = inputProcessor.processInput();
         String[] output = new String[100];
         return output;
     }

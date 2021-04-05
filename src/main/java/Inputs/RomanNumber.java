@@ -20,32 +20,25 @@ public enum RomanNumber {
         return value;
     }
 
-    public static int getValue(String romanNumber){
-        if(!RomanNumberValidator.isValidRomanNumber(romanNumber))
+    public static int getValue(String romanNumber) {
+        if (!RomanNumberValidator.isValidRomanNumber(romanNumber))
             return 0;
         char[] romanLetters = romanNumber.toCharArray();
         int value = 0;
 
-        for (int i=0; i<romanNumber.length(); i++)
-        {
+        for (int i = 0; i < romanNumber.length(); i++) {
             RomanNumber romanLetter1 = RomanNumber.valueOf(Character.toString(romanLetters[i]));
             int value1 = romanLetter1.value;
-            if (i+1 < romanNumber.length())
-            {
-                RomanNumber romanLetter2 = RomanNumber.valueOf(Character.toString(romanLetters[i+1]));
+            if (i + 1 < romanNumber.length()) {
+                RomanNumber romanLetter2 = RomanNumber.valueOf(Character.toString(romanLetters[i + 1]));
                 int value2 = romanLetter2.value;
-                if (value1 >= value2)
-                {
+                if (value1 >= value2) {
                     value = value + value1;
-                }
-                else
-                {
+                } else {
                     value = value + value2 - value1;
                     i++;
                 }
-            }
-            else
-            {
+            } else {
                 value = value + value1;
                 i++;
             }

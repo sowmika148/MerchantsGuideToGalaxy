@@ -13,30 +13,30 @@ class InputProcessor {
         this.input = input;
     }
 
-    OutputWrapper processInput() {
+    IntergalacticQuestions processInput() {
         List<String> intergalacticNumbersLines = new ArrayList<>();
         List<String> intergalacticUnitsLines = new ArrayList<>();
         List<String> intergalacticQuestionsLines = new ArrayList<>();
         for (String line : input) {
-            if (line.matches("([A-Za-z])* is (A-Z)")) {
+            line = line.trim();
+            if (line.matches("[A-Za-z]* is [A-Z]")) {
                 intergalacticNumbersLines.add(line);
-            }
-            else if(line.matches("([A-Za-z]\\s)* is [0-9]* Credits")){
+            } else if (line.matches("[[A-Za-z]\\s]* is [0-9]* Credits")) {
                 intergalacticUnitsLines.add(line);
-            }
-            else if(line.matches("([A-Za-z]\\s)* ?")){
+            } else if (line.matches("[[A-Za-z]\\s]* ?")) {
                 intergalacticQuestionsLines.add(line);
             }
         }
         return createOutput(intergalacticNumbersLines, intergalacticUnitsLines, intergalacticQuestionsLines);
     }
 
-    private OutputWrapper createOutput(List<String> intergalacticNumbersLines,
+    private IntergalacticQuestions createOutput(List<String> intergalacticNumbersLines,
                                        List<String> intergalacticUnitsLines,
-                                       List<String> intergalacticQuestionsLines ) {
+                                       List<String> intergalacticQuestionsLines) {
         IntergalacticNumbers intergalacticNumbers = new IntergalacticNumbers(intergalacticNumbersLines);
         IntergalacticUnits intergalacticUnits = new IntergalacticUnits(intergalacticUnitsLines, intergalacticNumbers);
-        IntergalacticQuestions intergalacticQuestions = new IntergalacticQuestions(intergalacticQuestionsLines);
-        return new OutputWrapper(intergalacticNumbers, intergalacticUnits, intergalacticQuestions);
+        IntergalacticQuestions intergalacticQuestions = new IntergalacticQuestions(intergalacticQuestionsLines,
+                intergalacticNumbers, intergalacticUnits);
+        return intergalacticQuestions;
     }
 }
